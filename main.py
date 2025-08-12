@@ -5,7 +5,7 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 
-load_dotenv
+load_dotenv()
 
 #Allows us to configure the name of the page
 st.set_page_config(page_title="Resume AI Critiquer", page_icon="📃", layout="centered")
