@@ -64,4 +64,12 @@ if analyze and uploaded_file:
             temperature=0.7,
             max_tokens=1000
         )
+        st.markdown("### Analyze Results")
+        st.markdown(response.choices[0].message.content)
+    
+    except Exception as e:
+        st.error(f"An error occured: {str(e)}")
+        
+
+
             
