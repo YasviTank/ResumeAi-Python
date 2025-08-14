@@ -53,4 +53,15 @@ if analyze and uploaded_file:
         {file_content}
 
         Please provide your analysis in a clear, structured format with specific recommendations."""
-        
+
+        client = OpenAI(api_key=OPENAI_API_KEY)
+        response = client.chat.completions.create(
+            model = "chatgpt-4o-latest"
+            messages = [
+                {"role": "system", "content": "You are an expert resume reviewer with years of experience in HR and recruitment."}
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=1000
+        )
+            
