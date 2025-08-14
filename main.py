@@ -16,4 +16,30 @@ st.markdown("Upload your resume and get an AI-powered feedback tailored to your 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 uploaded_file = st.file_uploader("Upload your resume (PDF or TXT)", type = ["pdf", "txt"])
+job_role = st.text_input("Enter the job you are targetting (optional)")
 
+analyze = st.button("Analyze Resume")
+
+#Extracting the content from the uploaded pdf file
+def extract_text_from_pdf(pdf_file):
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
+    text = ""
+    for page in pdf_reader:
+        text += page.extract_text() + "\n"
+    return text
+
+#Checking if file is pdf or text
+def extract_text_from_file(uploaded_file):
+    if uploaded_file.type == "application/pdf":
+        return extract_text_from_pdf(io.BytesIO(uploaded_file.read()))
+    return uploaded_file.read().decode("utf-8")
+
+if analyze and uploaded_file:
+    try:
+        file_content = extract_text_from_file(uploaded_file)
+
+        if not file_content.strip():
+            st.error("The uploaded file does not have any content...")
+            st.stop()
+
+        
