@@ -42,4 +42,15 @@ if analyze and uploaded_file:
             st.error("The uploaded file does not have any content...")
             st.stop()
 
+        prompt = f"""Please analyze this resume and provide constructive feedback.
+        Focus on the following aspects:
+        1.Content clarity and impact
+        2.Skills presentation
+        3.Experience descriptions
+        4.Specific imporvements for {job_role if job_role else 'general job applications'}
+
+        Resume content:
+        {file_content}
+
+        Please provide your analysis in a clear, structured format with specific recommendations."""
         
