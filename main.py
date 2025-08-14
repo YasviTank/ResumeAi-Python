@@ -56,9 +56,9 @@ if analyze and uploaded_file:
 
         client = OpenAI(api_key=OPENAI_API_KEY)
         response = client.chat.completions.create(
-            model = "chatgpt-4o-latest"
+            model = "chatgpt-4o-latest",
             messages = [
-                {"role": "system", "content": "You are an expert resume reviewer with years of experience in HR and recruitment."}
+                {"role": "system", "content": "You are an expert resume reviewer with years of experience in HR and recruitment."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
@@ -69,7 +69,7 @@ if analyze and uploaded_file:
     
     except Exception as e:
         st.error(f"An error occured: {str(e)}")
-        
+
 
 
             
