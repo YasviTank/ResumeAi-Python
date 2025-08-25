@@ -7,5 +7,4 @@
 - Optionally add a role description to get tailored feedback
 - Receive detailed suggestions to improve your resume
 
-## Built By
-- Yasvi Tank
+
